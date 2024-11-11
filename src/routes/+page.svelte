@@ -1,5 +1,7 @@
 <script lang="ts">
   import { random } from "../routes/random.svelte";
+  import { Button } from 'flowbite-svelte';
+  import Bar from "$lib/components/Bar.svelte"
   let mataValues: number[] = [];
   let cryptoValues: number[] = [];
   let windowValues: number[] = [];
@@ -14,12 +16,8 @@
     fisherYatesValues = random.FisherYatesRandom(range);
   }
 </script>
-
-<h1>auto Lotto</h1>
-
-
-
-<button on:click={() => auto_random(45)}>랜덤 번호 로또 번호 생성</button>
+<Bar/>
+<Button onclick={() => auto_random(45)}>랜덤 번호 로또 번호 생성</Button>
 
 <p>로또1 : {mataValues}</p>
 <p>로또2 : {cryptoValues}</p>

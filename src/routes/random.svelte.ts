@@ -71,7 +71,7 @@ class Random {
     
     for (let i = numbers.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      [numbers[i], numbers[j]] = [numbers[j], numbers[i]];  // 두 값을 교환
+      [numbers[i], numbers[j]] = [numbers[j], numbers[i]];
     }
     let randomValues = numbers.slice(0, 6);
     randomValues.sort((a, b) => a - b);
