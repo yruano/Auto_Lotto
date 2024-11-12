@@ -1,5 +1,7 @@
 <script>
   import { Navbar, NavBrand, NavLi, NavUl, NavHamburger } from 'flowbite-svelte';
+  import "$lib/components/Style.css"
+  import { base } from '$app/paths';
 </script>
 
 <Navbar>
@@ -7,11 +9,8 @@
     <span class="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Auto Lotto</span>
   </NavBrand>
   <NavHamburger  />
-  <NavUl >
-    <NavLi href="/">Home</NavLi>
-    <NavLi href="/about">About</NavLi>
-    <NavLi href="/docs/components/navbar">Navbar</NavLi>
-    <NavLi href="/pricing">Pricing</NavLi>
-    <NavLi href="/contact">Contact</NavLi>
+  <NavUl class="menubar">
+    <NavLi href="{base}/" class="menutext">로또</NavLi>
+    <NavLi href="{base}/Pension" class="menutext">연금 복권</NavLi>
   </NavUl>
 </Navbar>
