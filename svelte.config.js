@@ -16,7 +16,7 @@ const config = {
     }),
 
     paths: {
-      base: process.env.NODE_ENV === 'production' ? '/learn_svelte' : '',
+      base: process.env.NODE_ENV === 'production' ? '/AutoLotto' : '',
     },
   }
 };
