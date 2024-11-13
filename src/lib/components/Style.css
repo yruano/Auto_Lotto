@@ -9,8 +9,8 @@
   flex-direction: column; /* 요소를 세로로 나열 */
   align-items: center;
   justify-content: center;
-  min-height: 25vh;
-  gap: 15px; /* 각 항목 간격 */
+  min-height: 40vh;
+  gap: 20px; /* 각 항목 간격 */
 }
 
 .pension-vertical {
@@ -18,17 +18,65 @@
   flex-direction: column; /* 요소를 세로로 나열 */
   align-items: center;
   justify-content: center;
-  min-height: 15vh;
-  gap: 15px; /* 각 항목 간격 */
+  min-height: 25vh;
+  gap: 20px; /* 각 항목 간격 */
 }
 
 .menubar {
   display: flex;
-  justify-content: center;
-  width: 100%;
+  justify-content: center; /* 메뉴 항목들을 중앙에 정렬 */
+  align-items: center; /* 수직 가운데 정렬 */
+  background-color: #006400; /* 배경 색상 */
+  padding: 10px 20px;
+}
+
+.menubar a {
+  color: white; /* 텍스트 색상 */
+  text-decoration: none; /* 밑줄 제거 */
+  padding: 8px 16px;
+  transition: background-color 0.3s;
+}
+
+.menubar a:hover {
+  background-color: #ffd700; /* 호버 시 배경색 변경 */
+  border-radius: 4px; /* 호버 시 약간의 둥근 모서리 */
 }
 
 .menutext {
   font-size: 1.50rem; /* 1.25rem = 20px */
   font-weight: 500;
+}
+
+.button {
+  background-color: #ffd700; /* 기본 노란색 */
+  color: #006400; /* 텍스트 색상 */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s;
+}
+
+.button:hover {
+  background-color: #ffcc00; /* 호버 시 더 짙은 노란색 */
+}
+
+.button:active {
+  background-color: #e6b800; /* 클릭 시 짙은 노란색 */
+  transform: scale(0.98); /* 클릭 시 살짝 축소 효과 */
+}
+
+.number-circle {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  color: #333;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 50%;
+  margin: 0 5px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
 }

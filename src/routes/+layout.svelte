@@ -1,10 +1,13 @@
 <script>
 	import '../app.css';
+  import { base } from '$app/paths';
 	import '$lib/components/Style.css';
-	import Bar from '$lib/components/Bar.svelte';
   let { children } = $props();
 </script>
 
-<Bar/>
+<div class="menubar">
+  <a href="{base}/"> 로또 </a>
+  <a href="{base}/Pension"> 연금 보권 </a>
+</div>
 
 {@render children()}

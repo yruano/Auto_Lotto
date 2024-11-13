@@ -1,25 +1,41 @@
 <script lang="ts">
   import '$lib/components/Style.css';
-	import { Button } from 'flowbite-svelte';
 	import { randoms } from '$lib/components/Randoms.svelte';
 
 	let mataValues: number[] = [];
 	let cryptoValues: number[] = [];
 	let windowValues: number[] = [];
+	const colors = ['#FFD700', '#FF6347', '#7FFFD4', '#87CEFA', '#FF69B4', '#98FB98'];
 
 	function auto_random(range: number) {
 		mataValues = randoms.MataRandom(range, false);
 		cryptoValues = randoms.CryptoRandom(range, false);
 		windowValues = randoms.WindowCryptoRandom(range, false);
 	}
+
+	function getRandomColor(index: number) {
+		return colors[index % colors.length];
+	}
 </script>
 
 <div class="center">
-	<Button onclick={() => auto_random(9)}>연금 복권 번호 생성</Button>
+	<button class="button" onclick={() => auto_random(9)}>연금 복권 번호 생성</button>
 </div>
 
 <div class="pension-vertical">
-	<p class="menutext">번호1 : {mataValues}</p>
-	<p class="menutext">번호2 : {cryptoValues}</p>
-	<p class="menutext">번호3 : {windowValues}</p>
+	<p class="menutext">로또1:
+		{#each mataValues as num, i}
+			<span class="number-circle" style="background-color: {getRandomColor(i)}">{num}</span>
+		{/each}
+	</p>
+	<p class="menutext">로또2:
+		{#each cryptoValues as num, i}
+			<span class="number-circle" style="background-color: {getRandomColor(i)}">{num}</span>
+		{/each}
+	</p>
+	<p class="menutext">로또3:
+		{#each windowValues as num, i}
+			<span class="number-circle" style="background-color: {getRandomColor(i)}">{num}</span>
+		{/each}
+	</p>
 </div>
