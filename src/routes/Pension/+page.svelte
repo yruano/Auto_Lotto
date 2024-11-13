@@ -8,9 +8,9 @@
 	const colors = ['#FFD700', '#FF6347', '#7FFFD4', '#87CEFA', '#FF69B4', '#98FB98'];
 
 	function auto_random(range: number) {
-		mataValues = randoms.MataRandom(range, false);
-		cryptoValues = randoms.CryptoRandom(range, false);
-		windowValues = randoms.WindowCryptoRandom(range, false);
+		mataValues = randoms.MataRandom(range, 0, false);
+		cryptoValues = randoms.CryptoRandom(range, 0, false);
+		windowValues = randoms.WindowCryptoRandom(range, 0, false);
 	}
 
 	function getRandomColor(index: number) {

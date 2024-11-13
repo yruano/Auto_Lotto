@@ -10,10 +10,10 @@
 	const colors = ['#FFD700', '#FF6347', '#7FFFD4', '#87CEFA', '#FF69B4', '#98FB98'];
 
 	function auto_random(range: number) {
-		mataValues = randoms.MataRandom(range, true);
-		cryptoValues = randoms.CryptoRandom(range, true);
-		windowValues = randoms.WindowCryptoRandom(range, true);
-		timeValues = randoms.TimeRandom(range, true);
+		mataValues = randoms.MataRandom(range, 1, true);
+		cryptoValues = randoms.CryptoRandom(range, 1, true);
+		windowValues = randoms.WindowCryptoRandom(range, 1, true);
+		timeValues = randoms.TimeRandom(range);
 		fisherYatesValues = randoms.FisherYatesRandom(range);
 	}
 

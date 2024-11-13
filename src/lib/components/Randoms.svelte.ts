@@ -1,8 +1,8 @@
 class Randoms {
-  MataRandom(range: number, reduplication: boolean): number[] {
+  MataRandom(range: number, zero: number, reduplication: boolean): number[] {
     let randomArray: number[] = [];
     while (randomArray.length < 6) {
-      let randomValue = Math.floor(Math.random() * range) + 1;
+      let randomValue = Math.floor(Math.random() * range) + zero;
 
       if (reduplication) {
         if (!randomArray.includes(randomValue)) {
@@ -12,12 +12,16 @@ class Randoms {
         randomArray.push(randomValue);
       }
     }
-    randomArray.sort((a, b) => a - b);
+
+    if (reduplication) {
+      randomArray.sort((a, b) => a - b);
+    }
+    
     return randomArray;
   }
 
-  CryptoRandom(range: number, reduplication: boolean): number[] {
-    let numbers = Array.from({ length: range }, (_, index) => index + 1);
+  CryptoRandom(range: number, zero: number, reduplication: boolean): number[] {
+    let numbers = Array.from({ length: range }, (_, index) => index + zero);
     let randomValues: number[] = [];
     while (randomValues.length < 6) {
       let array = new Uint32Array(1);
@@ -32,12 +36,16 @@ class Randoms {
         randomValues.push(numbers[randomIndex]);
       }
     }
-    randomValues.sort((a, b) => a - b);
+    
+    if (reduplication) {
+      randomValues.sort((a, b) => a - b);
+    }
+
     return randomValues;
   }
 
-  WindowCryptoRandom(range: number, reduplication: boolean): number[] {
-    let numbers = Array.from({ length: range }, (_, index) => index + 1);
+  WindowCryptoRandom(range: number, zero: number, reduplication: boolean): number[] {
+    let numbers = Array.from({ length: range }, (_, index) => index + zero);
     let randomValues: number[] = [];
     while (randomValues.length < 6) {
       let randomBytes = new Uint8Array(1);
@@ -52,22 +60,22 @@ class Randoms {
         randomValues.push(numbers[randomIndex]);
       }
     }
-    randomValues.sort((a, b) => a - b);
+
+    if (reduplication) {
+      randomValues.sort((a, b) => a - b);
+    }
+
     return randomValues;
   }
 
-  TimeRandom(range: number, reduplication: boolean): number[] {
+  TimeRandom(range: number): number[] {
     let numbers = Array.from({ length: range }, (_, index) => index + 1);
     let randomValues: number[] = [];
     while (randomValues.length < 6) {
       let randomValue = performance.now() % 45;
       let randomIndex = Math.floor(randomValue);
-
-      if (reduplication) {
-        if (!randomValues.includes(numbers[randomIndex])) {
-          randomValues.push(numbers[randomIndex]);
-        }
-      } else {
+        
+      if (!randomValues.includes(numbers[randomIndex])) {
         randomValues.push(numbers[randomIndex]);
       }
     }
