@@ -9,7 +9,7 @@
   flex-direction: column; /* 요소를 세로로 나열 */
   align-items: center;
   justify-content: center;
-  min-height: 40vh;
+  min-height: 10vh;
   gap: 20px; /* 각 항목 간격 */
 }
 
@@ -18,7 +18,7 @@
   flex-direction: column; /* 요소를 세로로 나열 */
   align-items: center;
   justify-content: center;
-  min-height: 25vh;
+  min-height: 10vh;
   gap: 20px; /* 각 항목 간격 */
 }
 
@@ -56,6 +56,8 @@
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.1s;
+  margin-top: 25px; /* 위쪽 간격 제거 */
+  margin-bottom: 20px; /* 아래쪽 간격 20px */
 }
 
 .button:hover {
