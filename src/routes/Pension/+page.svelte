@@ -1,8 +1,8 @@
 <script lang="ts">
-	import '$lib/components/Style.css';
+  import '$lib/components/Style.css';
 	import { Button } from 'flowbite-svelte';
 	import Bar from '$lib/components/Bar.svelte';
-	import { randoms } from '../Randoms.svelte';
+	import { randoms } from '$lib/components/Randoms.svelte';
 
 	let mataValues: number[] = [];
 	let cryptoValues: number[] = [];
@@ -29,4 +29,3 @@
 	<p>로또3 : {windowValues}</p>
 	<p>로또4 : {timeValues}</p>
 </div>
-
