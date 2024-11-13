@@ -4,13 +4,22 @@
   margin-top: 10px; /*위 여백 조정*/
 }
 
-.center-vertical {
+.lotto-vertical {
   display: flex;
   flex-direction: column; /* 요소를 세로로 나열 */
   align-items: center;
   justify-content: center;
   min-height: 25vh;
-  gap: 10px; /* 각 항목 간격 */
+  gap: 15px; /* 각 항목 간격 */
+}
+
+.pension-vertical {
+  display: flex;
+  flex-direction: column; /* 요소를 세로로 나열 */
+  align-items: center;
+  justify-content: center;
+  min-height: 15vh;
+  gap: 15px; /* 각 항목 간격 */
 }
 
 .menubar {

@@ -15,13 +15,8 @@ const config = {
       fallback: '404.html'
     }),
 
-    // Specify prerender here without `default`
-    prerender: {
-      entries: ['*'] // Prerender all pages by default
-    },
-
     paths: {
-      base: process.env.NODE_ENV === 'production' ? '/AutoLotto' : '',
+      base: process.env.NODE_ENV === 'production' ? '/Auto_Lotto' : '',
     },
   }
 };

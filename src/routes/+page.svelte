@@ -1,7 +1,6 @@
 <script lang="ts">
 	import '$lib/components/Style.css';
 	import { Button } from 'flowbite-svelte';
-	import Bar from '$lib/components/Bar.svelte';
 	import { randoms } from '$lib/components/Randoms.svelte';
 
 	let mataValues: number[] = [];
@@ -19,16 +18,14 @@
 	}
 </script>
 
-<Bar />
-
 <div class="center">
 	<Button onclick={() => auto_random(45)}>로또 번호 생성</Button>
 </div>
 
-<div class="center-vertical">
-	<p>로또1 : {mataValues}</p>
-	<p>로또2 : {cryptoValues}</p>
-	<p>로또3 : {windowValues}</p>
-	<p>로또4 : {timeValues}</p>
-	<p>로또5 : {fisherYatesValues}</p>
+<div class="lotto-vertical">
+	<p class="menutext">로또1 : {mataValues}</p>
+	<p class="menutext">로또2 : {cryptoValues}</p>
+	<p class="menutext">로또3 : {windowValues}</p>
+	<p class="menutext">로또4 : {timeValues}</p>
+	<p class="menutext">로또5 : {fisherYatesValues}</p>
 </div>
