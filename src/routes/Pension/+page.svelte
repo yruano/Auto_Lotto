@@ -1,5 +1,5 @@
 <script lang="ts">
-  import '$lib/components/Style.css';
+	import '$lib/components/Style.css';
 	import { randoms } from '$lib/components/Randoms.svelte';
 
 	let mataValues: number[] = [];
@@ -23,17 +23,26 @@
 </div>
 
 <div class="pension-vertical">
-	<p class="menutext">연금 복권1:
+	<p class="menutext">
+		연금 복권1:
 		{#each mataValues as num, i}
 			<span class="number-circle" style="background-color: {getRandomColor(i)}">{num}</span>
 		{/each}
 	</p>
-	<p class="menutext">연금 복권2:
+	<p class="menutext">
+		연금 복권2:
 		{#each cryptoValues as num, i}
 			<span class="number-circle" style="background-color: {getRandomColor(i)}">{num}</span>
 		{/each}
 	</p>
-	<p class="menutext">연금 복권3:
+	<p class="menutext">
+		연금 복권3:
+		{#each windowValues as num, i}
+			<span class="number-circle" style="background-color: {getRandomColor(i)}">{num}</span>
+		{/each}
+	</p>
+	<p class="menutext">
+		연금 복권4:
 		{#each windowValues as num, i}
 			<span class="number-circle" style="background-color: {getRandomColor(i)}">{num}</span>
 		{/each}
