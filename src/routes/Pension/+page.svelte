@@ -23,17 +23,17 @@
 </div>
 
 <div class="pension-vertical">
-	<p class="menutext">로또1:
+	<p class="menutext">연금 복권1:
 		{#each mataValues as num, i}
 			<span class="number-circle" style="background-color: {getRandomColor(i)}">{num}</span>
 		{/each}
 	</p>
-	<p class="menutext">로또2:
+	<p class="menutext">연금 복권2:
 		{#each cryptoValues as num, i}
 			<span class="number-circle" style="background-color: {getRandomColor(i)}">{num}</span>
 		{/each}
 	</p>
-	<p class="menutext">로또3:
+	<p class="menutext">연금 복권3:
 		{#each windowValues as num, i}
 			<span class="number-circle" style="background-color: {getRandomColor(i)}">{num}</span>
 		{/each}
