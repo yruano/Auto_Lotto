@@ -5,12 +5,14 @@
 	let mataValues: number[] = [];
 	let cryptoValues: number[] = [];
 	let windowValues: number[] = [];
+  let lcgValues: number[] = [];
 	const colors = ['#FFD700', '#FF6347', '#7FFFD4', '#87CEFA', '#FF69B4', '#98FB98'];
 
 	function auto_random(range: number) {
 		mataValues = randoms.MataRandom(range, 0, false);
 		cryptoValues = randoms.CryptoRandom(range, 0, false);
 		windowValues = randoms.WindowCryptoRandom(range, 0, false);
+    lcgValues = randoms.LcgRandom();
 	}
 
 	function getRandomColor(index: number) {
@@ -43,7 +45,7 @@
 	</p>
 	<p class="menutext">
 		연금 복권4:
-		{#each windowValues as num, i}
+		{#each lcgValues as num, i}
 			<span class="number-circle" style="background-color: {getRandomColor(i)}">{num}</span>
 		{/each}
 	</p>
