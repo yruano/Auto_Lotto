@@ -93,18 +93,6 @@ class Randoms {
     randomValues.sort((a, b) => a - b);
     return randomValues;
   }
-
-  LcgRandom() {
-    let seed = 42; // 초기 시드 값
-    let randomValues = [];
-
-    for (let i = 0; i < 6; i++) {
-      seed = (1664525 * seed + 1013904223) % 4294967296; // LCG 공식
-      randomValues.push(seed % 10); // 0~9 사이의 값 반환
-    }
-
-    return randomValues;
-  }
 }
 
 export const randoms = new Randoms();

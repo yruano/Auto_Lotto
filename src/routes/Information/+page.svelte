@@ -1,69 +1,37 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
+	import { WebSocketClient } from '$lib/components/Server.svelte';
 
-	let data: string = '<p>데이터 로드 중...</p>'; // 초기 HTML 데이터
-	let socket: WebSocket | null = null;
+	let data: string = '<p>데이터 로드 중...</p>';
+	let webSocketClient: WebSocketClient | null = null; // 초기값 설정
 
-	// 웹 소켓 연결 함수
-	function connectWebSocket() {
-		socket = new WebSocket('ws://localhost:8080/ws');
-
-		socket.onopen = () => {
-			console.log('서버와 연결되었습니다.');
-		};
-
-		socket.onmessage = (event: MessageEvent) => {
-			console.log('서버에서 받은 데이터:', event.data); // 서버에서 받은 데이터 확인
-			data = event.data; // 서버로부터 받은 HTML 데이터를 업데이트
-		};
-
-		socket.onclose = () => {
-			console.log('서버 연결이 종료되었습니다.');
-			// 필요시 재연결 로직 추가 가능
-			setTimeout(connectWebSocket, 5000); // 5초 후 재연결 시도
-		};
-
-		socket.onerror = (error: Event) => {
-			console.error('웹소켓 오류:', error);
-		};
-	}
-
-	// 컴포넌트가 로드될 때 웹 소켓 연결
 	onMount(() => {
-		connectWebSocket();
+		// WebSocketClient 생성
+		webSocketClient = new WebSocketClient('ws://localhost:8080/ws');
 
+		// 연결 시작
+		webSocketClient.connect((message: string) => {
+			data = message;
+		});
+
+		// 컴포넌트 파괴 시 연결 종료
 		return () => {
-			if (socket) {
-				socket.close();
+			if (webSocketClient) {
+				webSocketClient.close();
+				webSocketClient = null; // 연결 종료 후 null로 초기화
 			}
 		};
 	});
 
-	// 컴포넌트가 파괴될 때 연결 종료
 	onDestroy(() => {
-		if (socket) {
-			socket.close();
+		if (webSocketClient) {
+			webSocketClient.close();
+			webSocketClient = null; // 연결 종료 후 null로 초기화
 		}
 	});
 </script>
 
-<div class="data-container">
-	<!-- HTML 콘텐츠를 안전하게 렌더링 -->
-	<div>{@html data}</div>
-</div>
+<main>
+	{@html data}
+</main>
 
-<style>
-	.data-container {
-		padding: 20px;
-		font-size: 18px;
-		background: #f4f4f4;
-		border-radius: 8px;
-		max-width: 400px;
-		margin: 20px auto;
-		text-align: center;
-	}
-
-	.hidden {
-		display: none;
-	}
-</style>
