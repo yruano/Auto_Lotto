@@ -1,37 +1,70 @@
 <script lang="ts">
-	import { onMount, onDestroy } from 'svelte';
-	import { WebSocketClient } from '$lib/components/Server.svelte';
+  import { onMount } from 'svelte';
 
-	let data: string = '<p>데이터 로드 중...</p>';
-	let webSocketClient: WebSocketClient | null = null; // 초기값 설정
+  let socket: WebSocket | null = null;
+  let result: string = "";
 
-	onMount(() => {
-		// WebSocketClient 생성
-		webSocketClient = new WebSocketClient('ws://localhost:8080/ws');
+  // WebSocket 연결
+  onMount(() => {
+    socket = new WebSocket("ws://localhost:8080/wc");
 
-		// 연결 시작
-		webSocketClient.connect((message: string) => {
-			data = message;
-		});
+    socket.onopen = () => {
+      console.log("WebSocket 연결됨");
+    };
 
-		// 컴포넌트 파괴 시 연결 종료
-		return () => {
-			if (webSocketClient) {
-				webSocketClient.close();
-				webSocketClient = null; // 연결 종료 후 null로 초기화
-			}
-		};
-	});
+    socket.onmessage = (event) => {
+      result = event.data; // 서버에서 받은 데이터를 result에 저장
+    };
 
-	onDestroy(() => {
-		if (webSocketClient) {
-			webSocketClient.close();
-			webSocketClient = null; // 연결 종료 후 null로 초기화
-		}
-	});
+    socket.onerror = (error) => {
+      console.error("WebSocket 오류:", error);
+    };
+
+    socket.onclose = () => {
+      console.log("WebSocket 연결 종료됨");
+    };
+
+    return () => {
+      if (socket) {
+        socket.close(); // 컴포넌트가 언마운트될 때 WebSocket 종료
+      }
+    };
+  });
+
+  // 크롤링 요청 함수
+  function requestCrawl() {
+    if (socket && socket.readyState === WebSocket.OPEN) {
+      socket.send("crawl"); // 서버에 'crawl' 메시지 전송
+    } else {
+      console.error("WebSocket 연결되지 않음");
+    }
+  }
 </script>
 
 <main>
-	{@html data}
+  <h1>웹 크롤링 요청</h1>
+  <button on:click={requestCrawl}>웹 크롤링 시작</button>
+  <div>
+    <h2>크롤링된 데이터:</h2>
+    <p>{result || "아직 데이터를 받지 않았습니다."}</p>
+  </div>
 </main>
 
+<style>
+  main {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 20px;
+  }
+
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  div {
+    margin-top: 20px;
+    font-size: 18px;
+  }
+</style>
